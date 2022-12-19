@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-class StatusesIndex < Chewy::Index
-  include FormattingHelper
 
-  settings index: { refresh_interval: '30s' }, analysis: {
+class StatusesIndex < Chewy::Index
+  settings index: { refresh_interval: '15m' }, analysis: {
     filter: {
       english_stop: {
         type: 'stop',
@@ -20,12 +19,13 @@ class StatusesIndex < Chewy::Index
     },
     analyzer: {
       content: {
-        tokenizer: 'uax_url_email',
+        tokenizer: 'kuromoji_tokenizer',
+        char_filter: %w(
+          icu_normalizer
+        ),
         filter: %w(
           english_possessive_stemmer
-          lowercase
           asciifolding
-          cjk_width
           english_stop
           english_stemmer
         ),
