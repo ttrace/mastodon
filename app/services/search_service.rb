@@ -41,6 +41,7 @@ class SearchService < BaseService
   end
 
   def perform_statuses_search!
+<<<<<<< HEAD
     StatusesSearchService.new.call(
       @query,
       @account,
@@ -50,6 +51,30 @@ class SearchService < BaseService
       min_id: @options[:min_id],
       max_id: @options[:max_id]
     )
+=======
+    definition = parsed_query.apply(StatusesIndex.filter(term: { searchable_by: @account.id }))
+    definition = parsed_query.apply(StatusesIndex).order(id: :desc)
+
+    if @options[:account_id].present?
+      definition = definition.filter(term: { account_id: @options[:account_id] })
+    end
+
+    if @options[:min_id].present? || @options[:max_id].present?
+      range      = {}
+      range[:gt] = @options[:min_id].to_i if @options[:min_id].present?
+      range[:lt] = @options[:max_id].to_i if @options[:max_id].present?
+      definition = definition.filter(range: { id: range })
+    end
+
+    results             = definition.limit(@limit).offset(@offset).objects.compact
+    account_ids         = results.map(&:account_id)
+    account_domains     = results.map(&:account_domain)
+    preloaded_relations = relations_map_for_account(@account, account_ids, account_domains)
+
+    results.reject { |status| StatusFilter.new(status, @account, preloaded_relations).filtered? }
+  rescue Faraday::ConnectionFailed, Parslet::ParseFailed
+    []
+>>>>>>> d6025aa47 (サーバーと同一の変更)
   end
 
   def perform_hashtags_search!
@@ -103,5 +128,19 @@ class SearchService < BaseService
 
   def status_search?
     @options[:type].blank? || @options[:type] == 'statuses'
+  end
+
+  def relations_map_for_account(account, account_ids, domains)
+    {
+      blocking: Account.blocking_map(account_ids, account.id),
+      blocked_by: Account.blocked_by_map(account_ids, account.id),
+      muting: Account.muting_map(account_ids, account.id),
+      # following: Account.following_map(account_ids, account.id),
+      domain_blocking_by_domain: Account.domain_blocking_map_by_domain(domains, account.id),
+    }
+  end
+
+  def parsed_query
+    SearchQueryTransformer.new.apply(SearchQueryParser.new.parse(@query))
   end
 end

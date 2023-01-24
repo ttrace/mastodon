@@ -34,30 +34,13 @@ class SearchQueryTransformer < Parslet::Transform
 
     private
 
-    def clauses_by_operator
-      @clauses_by_operator ||= @clauses.compact.chunk(&:operator).to_h
-    end
-
-    def flags_from_clauses!
-      @flags = clauses_by_operator.fetch(:flag, []).to_h { |clause| [clause.prefix, clause.term] }
-    end
-
-    def must_clauses
-      clauses_by_operator.fetch(:must, [])
-    end
-
-    def must_not_clauses
-      clauses_by_operator.fetch(:must_not, [])
-    end
-
-    def filter_clauses
-      clauses_by_operator.fetch(:filter, [])
-    end
-
-    def indexes
-      case @flags['in']
-      when 'library'
-        [StatusesIndex]
+    def clause_to_query(clause)
+      case clause
+      when TermClause
+        # { multi_match: { type: 'most_fields', query: clause.term, fields: ['text', 'text.stemmed'] } }
+        { match: {  'text.stemmed': {query: clause.term} } }
+      when PhraseClause
+        { match_phrase: { text: { query: clause.phrase } } }
       else
         [PublicStatusesIndex, StatusesIndex]
       end
