@@ -84,7 +84,7 @@ eo:
         remote: Foraj
         title: Loko
       login_status: Ensaluta stato
-      media_attachments: Ligitaj aŭdovidaĵoj
+      media_attachments: Plurmediaj aldonaĵoj
       memorialize: Ŝanĝi al memoro
       memorialized: Memorita
       memorialized_msg: Sukcese ŝanĝis %{username} al memorkonto
@@ -116,9 +116,10 @@ eo:
       redownloaded_msg: Sukcese refreŝis profilon de %{username} de origino
       reject: Malakcepti
       rejected_msg: Sukcese malaprobis aliĝ-peton de %{username}
-      remove_avatar: Forigi profilbildon
+      remote_suspension_irreversible: La informoj de ĉi tiu konto estis neinversigeble forigitaj.
+      remove_avatar: Forigi la profilbildon
       remove_header: Forigi kapan bildon
-      removed_avatar_msg: La profilbildo de %{username} estas sukcese forigita
+      removed_avatar_msg: La rolfiguro de %{username} estas sukcese forigita
       removed_header_msg: Sukcese forigis kapbildon de %{username}
       resend_confirmation:
         already_confirmed: Ĉi tiu uzanto jam estas konfirmita
@@ -264,7 +265,7 @@ eo:
         promote_user_html: "%{name} plirangigis uzanton %{target}"
         reject_appeal_html: "%{name} malakceptis kontroldecidapelacion de %{target}"
         reject_user_html: "%{name} malakceptis registriĝon de %{target}"
-        remove_avatar_user_html: "%{name} forigis profilbildon de %{target}"
+        remove_avatar_user_html: "%{name} forigis la profilbildon de %{target}"
         reopen_report_html: "%{name} remalfermis signalon %{target}"
         resend_user_html: "%{name} resendis konfirman retmesaĝon por %{target}"
         reset_password_user_html: "%{name} restarigis la pasvorton de la uzanto %{target}"
@@ -342,7 +343,7 @@ eo:
     dashboard:
       active_users: aktivaj uzantoj
       interactions: interago
-      media_storage: Konservo de aŭdovidaĵoj
+      media_storage: Konservo de plurmedioj
       new_users: novaj uzantoj
       opened_reports: raportoj malfermitaj
       pending_appeals_html:
@@ -471,7 +472,7 @@ eo:
         comment: Interna noto
         description_html: Vi povas difini enhavopolitikojn al la ĉiuj kontoj.
         policies:
-          reject_media: Malakcepti aŭdovidaĵojn
+          reject_media: Malakcepti plurmediojn
           reject_reports: Malakcepti raportojn
           silence: Kaŝu
           suspend: Suspendi
@@ -484,7 +485,7 @@ eo:
         instance_followers_measure: niaj sekvantoj tie
         instance_follows_measure: iliaj sekvantoj ĉi tie
         instance_languages_dimension: Ĉefaj lingvoj
-        instance_media_attachments_measure: konservitaj ligitaj aŭdovidaĵoj
+        instance_media_attachments_measure: konservitaj plurmediaj aldonaĵoj
         instance_reports_measure: raportoj pri ili
         instance_statuses_measure: konservitaj afiŝoj
       delivery:
@@ -573,8 +574,6 @@ eo:
         mark_as_sensitive_description_html: La audovidaĵo en la raportita mesaĝo markotas kiel sentema kaj admono rekorditas.
         other_description_html: Vidu pli da ebloj por regi la sintenon de la konto kaj por personigi la komunikadon kun la raportita konto.
         resolve_description_html: Nenio okazotas al la raportita konto kaj la raporto fermotas.
-        silence_description_html: La profilo estas videbla nur de persono kiu jam sekvis au serĉis.
-        suspend_description_html: La profilo kaj ĉiuj ĝiaj enhavoj fariĝos nealirebla kaj ĝi fine forigotas.
       actions_description_html: Decidu kiu ago por solvi ĉi tiuj raporto. <strong>Spamo</strong> kategorio elektitas.
       add_to_report: Aldoni pli al raporto
       are_you_sure: Ĉu vi certas?
@@ -885,7 +884,7 @@ eo:
       next_steps: Vi povas aprobi apelacion por malfari kontroldecidon au ignori.
       subject: "%{username} apelacias kontroldecidon ĉe %{instance}"
     new_pending_account:
-      body: La detaloj de la nova konto estas sube. Vi povas aprobi aŭ Malakcepti ĉi kandidatiĝo.
+      body: La detaloj de la nova konto estas ĉi-sube. Vi povas akcepti aŭ malakcepti tiun aliĝilon.
       subject: Nova konto atendas por recenzo en %{instance} (%{username})
     new_report:
       body: "%{reporter} signalis %{target}"
@@ -973,6 +972,8 @@ eo:
       email_below_hint_html: Se malsupra retpoŝtoadreso estas neĝusta, vi povas ŝanĝi ĉi tie kaj ricevi novan konfirmretpoŝton.
       email_settings_hint_html: La konfirmretpoŝto senditas al %{email}.
       title: Agordi
+    sign_in:
+      title: Ensalutu al %{domain}
     sign_up:
       preamble: Per konto ĉe ĉi tiu Mastodon-servilo, vi povas sekvi ajn personojn en la reto.
       title: Ni pretigu vin ĉe %{domain}.
@@ -1544,7 +1545,7 @@ eo:
     min_reblogs: Konservi diskonitajn mesaĝojn almenau
     min_reblogs_hint: Oni ne forigas viajn afiŝojn kiuj estas diskonigitaj almenaŭ ĉi tiun nombron da fojoj. Lasu malplena por forigi afiŝojn sendepende de iliaj nombroj da diskonigoj
   stream_entries:
-    pinned: Alpinglita
+    pinned: Fiksita afiŝo
     reblogged: diskonigita
     sensitive_content: Tikla enhavo
   strikes:
