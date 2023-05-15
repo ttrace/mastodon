@@ -30,7 +30,7 @@ hu:
       form:
         error: Hoppá! Ellenőrizük az űrlapot az esetleges hibák miatt
       help:
-        native_redirect_uri: '%{native_redirect_uri} használata a helyi tesztekhez'
+        native_redirect_uri: "%{native_redirect_uri} használata a helyi tesztekhez"
         redirect_uri: Egy sor URI-nként
         scopes: A hatóköröket szóközzel válasszuk el. Hagyjuk üresen az alapértelmezett hatókörökhöz.
       index:
@@ -166,29 +166,29 @@ hu:
       follow: fiókok kapcsolatok módosítása
       push: push értesítések fogadása
       read: saját fiók adatainak olvasása
-      "read:accounts": fiók adatainak megtekintése
-      "read:blocks": letiltások megtekintése
-      "read:bookmarks": könyvjelzőik megtekintése
-      "read:favourites": kedvencek megtekintése
-      "read:filters": szűrök megtekintése
-      "read:follows": követések megtekintése
-      "read:lists": listák megtekintése
-      "read:mutes": némítások megtekintése
-      "read:notifications": értesítések megtekintése
-      "read:reports": bejelentések megtekintése
-      "read:search": keresés saját nevemben
-      "read:statuses": bejegyzések megtekintése
+      read:accounts: fiók adatainak megtekintése
+      read:blocks: letiltások megtekintése
+      read:bookmarks: könyvjelzőik megtekintése
+      read:favourites: kedvencek megtekintése
+      read:filters: szűrök megtekintése
+      read:follows: követések megtekintése
+      read:lists: listák megtekintése
+      read:mutes: némítások megtekintése
+      read:notifications: értesítések megtekintése
+      read:reports: bejelentések megtekintése
+      read:search: keresés saját nevemben
+      read:statuses: bejegyzések megtekintése
       write: fiókod adatainak megváltoztatása
-      "write:accounts": saját profil megváltoztatása
-      "write:blocks": fiókok és domainek letiltása
-      "write:bookmarks": bejegyzések könyvjelzőzése
-      "write:conversations": beszélgetések némítása és törlése
-      "write:favourites": bejegyzések kedvencnek jelölése
-      "write:filters": szűrők létrehozása
-      "write:follows": mások követése
-      "write:lists": listák létrehozása
-      "write:media": média feltöltése
-      "write:mutes": emberek és beszélgetések némítása
-      "write:notifications": értesítések törlése
-      "write:reports": mások bejelentése
-      "write:statuses": bejegyzések közzététele
+      write:accounts: saját profil megváltoztatása
+      write:blocks: fiókok és domainek letiltása
+      write:bookmarks: bejegyzések könyvjelzőzése
+      write:conversations: beszélgetések némítása és törlése
+      write:favourites: bejegyzések kedvencnek jelölése
+      write:filters: szűrők létrehozása
+      write:follows: mások követése
+      write:lists: listák létrehozása
+      write:media: média feltöltése
+      write:mutes: emberek és beszélgetések némítása
+      write:notifications: értesítések törlése
+      write:reports: mások bejelentése
+      write:statuses: bejegyzések közzététele
