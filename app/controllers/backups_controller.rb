@@ -15,6 +15,8 @@ class BackupsController < ApplicationController
     when :fog
       if Paperclip::Attachment.default_options.dig(:fog_credentials, :openstack_temp_url_key).present?
         redirect_to @backup.dump.expiring_url(Time.now.utc + 10), allow_other_host: true
+      if Paperclip::Attachment.default_options.dig(:fog_credentials, :openstack_temp_url_key).present?
+        redirect_to @backup.dump.expiring_url(Time.now.utc + 10)
       else
         redirect_to full_asset_url(@backup.dump.url), allow_other_host: true
       end
