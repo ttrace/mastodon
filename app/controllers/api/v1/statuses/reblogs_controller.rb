@@ -15,6 +15,9 @@ class Api::V1::Statuses::ReblogsController < Api::BaseController
     with_redis_lock("reblog:#{current_account.id}:#{@reblog.id}") do
       @status = ReblogService.new.call(current_account, @reblog, reblog_params)
     end
+    with_lock("reblog:#{current_account.id}:#{@reblog.id}") do
+      @status = ReblogService.new.call(current_account, @reblog, reblog_params)
+    end
 
     render json: @status, serializer: REST::StatusSerializer
   end
