@@ -32,8 +32,8 @@ module Twitter::TwitterText
         #{REGEXEN[:valid_general_url_path_chars]}*
         (?:#{REGEXEN[:valid_url_balanced_parens]} #{REGEXEN[:valid_general_url_path_chars]}*)*
         #{REGEXEN[:valid_url_path_ending_chars]}
-      )|(?:#{REGEXEN[:valid_general_url_path_chars]}+/)
-    )}iox
+      )|(?:#{REGEXEN[:valid_general_url_path_chars]}+\/)
+    )/iox
     REGEXEN[:valid_url] = %r{
       (                                                                                     #   $1 total match
         (#{REGEXEN[:valid_url_preceding_chars]})                                            #   $2 Preceding character
