@@ -2,7 +2,9 @@
 
 
 class StatusesIndex < Chewy::Index
-  settings index: { refresh_interval: '15m' }, analysis: {
+  include FormattingHelper
+
+  settings index: index_preset(refresh_interval: '30s', number_of_shards: 5), analysis: {
     filter: {
       english_stop: {
         type: 'stop',
