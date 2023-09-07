@@ -18,7 +18,9 @@ class StatusesIndex < Chewy::Index
         language: 'possessive_english',
       },
     },
-
+    char_filter: {
+      ["icu_normalizer"],
+    },
     analyzer: {
       verbatim: {
         tokenizer: 'uax_url_email',
@@ -26,7 +28,7 @@ class StatusesIndex < Chewy::Index
       },
 
       content: {
-        tokenizer: 'standard',
+        tokenizer: 'kuromoji_tokenizer',
         filter: %w(
           lowercase
           asciifolding
