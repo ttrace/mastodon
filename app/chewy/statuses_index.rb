@@ -18,9 +18,7 @@ class StatusesIndex < Chewy::Index
         language: 'possessive_english',
       },
     },
-    char_filter: {
-      ["icu_normalizer"],
-    },
+
     analyzer: {
       verbatim: {
         tokenizer: 'uax_url_email',
