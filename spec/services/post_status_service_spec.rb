@@ -172,7 +172,7 @@ RSpec.describe PostStatusService, type: :service do
 
   it 'processes duplicate mentions correctly' do
     account = Fabricate(:account)
-    mentioned_account = Fabricate(:account, username: 'alice')
+    Fabricate(:account, username: 'alice')
 
     expect do
       subject.call(account, text: '@alice @alice @alice hey @alice')
@@ -229,7 +229,7 @@ RSpec.describe PostStatusService, type: :service do
     account = Fabricate(:account)
     media = Fabricate(:media_attachment, account: Fabricate(:account))
 
-    status = subject.call(
+    subject.call(
       account,
       text: 'test status update',
       media_ids: [media.id]
