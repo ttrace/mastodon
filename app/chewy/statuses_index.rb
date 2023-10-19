@@ -28,7 +28,7 @@ class StatusesIndex < Chewy::Index
       },
 
       content: {
-        tokenizer: 'standard',
+        tokenizer: 'kuromoji_tokenizer',
         filter: %w(
           lowercase
           asciifolding

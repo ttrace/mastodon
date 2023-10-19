@@ -23,7 +23,10 @@ class AccountsIndex < Chewy::Index
 
     analyzer: {
       natural: {
-        tokenizer: 'standard',
+        char_filter:[
+          "icu_normalizer"
+        ],
+        tokenizer: 'kuromoji_tokenizer',
         filter: %w(
           lowercase
           asciifolding
