@@ -906,7 +906,6 @@ DEPENDENCIES
   rails (~> 7.1.1)
   rails-controller-testing (~> 1.0)
   rails-i18n (~> 7.0)
-  rails-settings-cached (~> 0.6)!
   rdf-normalize (~> 0.5)
   redcarpet (~> 3.6)
   redis (~> 4.5)
