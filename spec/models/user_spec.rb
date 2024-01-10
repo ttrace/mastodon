@@ -38,6 +38,7 @@ RSpec.describe User do
       user.save(validate: false)
       expect(user.valid?).to be true
     end
+  end
 
     it 'is valid with a localhost e-mail address' do
       user = Fabricate.build(:user, email: 'admin@localhost')
@@ -51,16 +52,32 @@ RSpec.describe User do
       expect(user.locale).to be_nil
     end
 
-    it 'cleans out invalid timezone' do
-      user = Fabricate.build(:user, time_zone: 'toto')
-      expect(user.valid?).to be true
-      expect(user.time_zone).to be_nil
+    describe 'time_zone' do
+      it 'preserves valid timezone' do
+        user = Fabricate.build(:user, time_zone: 'UTC')
+
+        expect(user.time_zone).to eq('UTC')
+      end
+
+      it 'cleans out invalid timezone' do
+        user = Fabricate.build(:user, time_zone: 'toto')
+
+        expect(user.time_zone).to be_nil
+      end
     end
 
-    it 'cleans out empty string from languages' do
-      user = Fabricate.build(:user, chosen_languages: [''])
-      user.valid?
-      expect(user.chosen_languages).to be_nil
+    describe 'languages' do
+      it 'preserves valid options for languages' do
+        user = Fabricate.build(:user, chosen_languages: ['en', 'fr', ''])
+
+        expect(user.chosen_languages).to eq(['en', 'fr'])
+      end
+
+      it 'cleans out empty string from languages' do
+        user = Fabricate.build(:user, chosen_languages: [''])
+
+        expect(user.chosen_languages).to be_nil
+      end
     end
   end
 
