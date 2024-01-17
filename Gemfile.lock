@@ -445,7 +445,7 @@ GEM
       uri
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.4.4)
+    net-imap (0.4.9.1)
       date
       net-protocol
     net-ldap (0.19.0)
@@ -453,7 +453,7 @@ GEM
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-smtp (0.4.0)
+    net-smtp (0.4.0.1)
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.16.0)
@@ -546,7 +546,7 @@ GEM
       rack
     rack-proxy (0.7.6)
       rack
-    rack-session (1.0.1)
+    rack-session (1.0.2)
       rack (< 3)
     rack-test (2.1.0)
       rack (>= 1.3)
