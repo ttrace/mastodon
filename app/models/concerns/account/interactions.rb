@@ -301,12 +301,6 @@ module Account::Interactions
     })
   end
 
-  private
-
-  def remove_potential_friendship(other_account)
-    PotentialFriendshipTracker.remove(id, other_account.id)
-  end
-
   def normalized_domain(domain)
     TagManager.instance.normalize_domain(domain)
   end
