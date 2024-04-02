@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.4
+# syntax=docker/dockerfile:1.7
 
 FROM ghcr.io/moritzheiber/ruby-jemalloc:3.2.3-slim as ruby
 FROM node:${NODE_VERSION} as build
