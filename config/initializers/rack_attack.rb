@@ -30,7 +30,7 @@ class Rack::Attack
     end
 
     def authenticated_user_id
-      authenticated_token&.resource_owner_id
+      authenticated_token&.resource_owner_id || warden_user_id
     end
 
     def authenticated_token_id
@@ -60,6 +60,10 @@ class Rack::Attack
     def paging_request?
       params['page'].present? || params['min_id'].present? || params['max_id'].present? || params['since_id'].present?
     end
+  end
+
+  Rack::Attack.safelist('allow from localhost') do |req|
+    req.remote_ip == '127.0.0.1' || req.remote_ip == '::1'
   end
 
   Rack::Attack.blocklist('deny from blocklist') do |req|
@@ -142,7 +146,7 @@ class Rack::Attack
   end
 
   throttle('throttle_password_change/account', limit: 10, period: 10.minutes) do |req|
-    req.warden_user_id if req.put? || (req.patch? && req.path_matches?('/auth'))
+    req.authenticated_user_id if req.put? || (req.patch? && req.path_matches?('/auth'))
   end
 
   self.throttled_responder = lambda do |request|
