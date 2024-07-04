@@ -9,17 +9,13 @@ describe 'API V1 Statuses Translations' do
   let(:headers) { { 'Authorization' => "Bearer #{token.token}" } }
 
   context 'with an application token' do
-    let(:token) { Fabricate(:accessible_access_token, resource_owner_id: nil, scopes: 'read:statuses', application: app) }
-
-    before do
-      allow(controller).to receive(:doorkeeper_token) { token }
-    end
+    let(:token) { Fabricate(:accessible_access_token, resource_owner_id: nil, scopes: scopes) }
 
     describe 'POST /api/v1/statuses/:status_id/translate' do
       let(:status) { Fabricate(:status, account: user.account, text: 'Hola', language: 'es') }
 
       before do
-        post :create, params: { status_id: status.id }
+        post "/api/v1/statuses/#{status.id}/translate", headers: headers
       end
 
       it 'returns http unprocessable entity' do
