@@ -155,7 +155,7 @@ describe Settings::ApplicationsController do
       post :destroy, params: { id: app.id }
     end
 
-    it 'redirects back to applications page and removes the app' do
+    it 'redirects back to applications page removes the app' do
       expect(response).to redirect_to(settings_applications_path)
       expect(Doorkeeper::Application.find_by(id: app.id)).to be_nil
     end
