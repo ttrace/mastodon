@@ -4,9 +4,9 @@ require 'sidekiq_unique_jobs/web' if ENV['ENABLE_SIDEKIQ_UNIQUE_JOBS_UI'] == tru
 require 'sidekiq-scheduler/web'
 
 class RedirectWithVary < ActionDispatch::Routing::PathRedirect
-  def serve(...)
-    super.tap do |_, headers, _|
-      headers['Vary'] = 'Origin, Accept'
+  def build_response(req)
+    super.tap do |response|
+      response.headers['Vary'] = 'Origin, Accept'
     end
   end
 end

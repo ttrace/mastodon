@@ -33,7 +33,7 @@ zh-CN:
         title: 新邮箱地址
       password_change:
         explanation: 你的账户密码已更改。
-        extra: 如果你并没有申请更改密码，那似乎有人已经入侵你的帐户。请立即更改你的密码；如果你已经无法访问你的帐户，请联系服务器的管理员获取帮助。
+        extra: 如果你并没有申请更改密码，那似乎有人已经入侵你的账户。请立即更改你的密码；如果你已经无法访问你的账户，请联系服务器的管理员获取帮助。
         subject: Mastodon：密码已被更改
         title: 密码已被重置
       reconfirmation_instructions:
@@ -66,7 +66,7 @@ zh-CN:
         subject: Mastodon：账户解锁信息
       webauthn_credential:
         added:
-          explanation: 以下安全密钥已添加到你的帐户
+          explanation: 以下安全密钥已添加到你的账户
           subject: Mastodon：新的安全密钥
           title: 已添加一个新的安全密钥
         deleted:

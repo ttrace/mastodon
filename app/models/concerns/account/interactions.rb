@@ -88,6 +88,9 @@ module Account::Interactions
       has_many :remote_severed_relationships, foreign_key: 'remote_account_id', inverse_of: :remote_account
     end
 
+    # Hashtag follows
+    has_many :tag_follows, inverse_of: :account, dependent: :destroy
+
     # Account notes
     has_many :account_notes, dependent: :destroy
 
@@ -300,10 +303,6 @@ module Account::Interactions
       muting: Account.muting_map(account_ids, id),
       domain_blocking_by_domain: Account.domain_blocking_map_by_domain(domains, id),
     })
-  end
-
-  def normalized_domain(domain)
-    TagManager.instance.normalize_domain(domain)
   end
 
   def normalized_domain(domain)
